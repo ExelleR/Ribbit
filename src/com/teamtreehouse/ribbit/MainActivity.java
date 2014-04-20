@@ -46,6 +46,7 @@ public class MainActivity extends FragmentActivity implements
 	public static final int FILE_SIZE_LIMIT = 1024*1024*10; // 10 MB
 	
 	protected Uri mMediaUri;
+
 	
 	protected DialogInterface.OnClickListener mDialogListener = 
 			new DialogInterface.OnClickListener() {
@@ -230,8 +231,10 @@ public class MainActivity extends FragmentActivity implements
 					.setTabListener(this));
 		}
 	}
-	
-	@Override
+
+
+
+    @Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		super.onActivityResult(requestCode, resultCode, data);
 		
@@ -321,14 +324,17 @@ public class MainActivity extends FragmentActivity implements
 			case R.id.action_logout:
 				ParseUser.logOut();
 				navigateToLogin();
+                break;
 			case R.id.action_edit_friends:
 				Intent intent = new Intent(this, EditFriendsActivity.class);
 				startActivity(intent);
+                break;
 			case R.id.action_camera:
 				AlertDialog.Builder builder = new AlertDialog.Builder(this);
 				builder.setItems(R.array.camera_choices, mDialogListener);
 				AlertDialog dialog = builder.create();
 				dialog.show();
+                break;
 		}
 		
 		return super.onOptionsItemSelected(item);
